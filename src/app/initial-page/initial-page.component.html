@@ -1,0 +1,80 @@
+<ng-container>
+  <div class="mainmenu-area" data-spy="affix" data-offset-top="100">
+    <div *ngIf="noDialogsOpened()" class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand logo">
+          <img class="logo" src="../../images/attusLogo2.png">
+        </a>
+      </div>
+
+      <nav class="collapse navbar-collapse" id="primary-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#home-page">Inicio</a></li>
+          <li><a href="#how-it-works">Como funciona</a></li>
+          <li><a href="#advantages-page">Vantagens</a></li>
+          <li><a href="#projects-page">Projetos</a></li>
+          <li><a href="#faq-page">FAQ</a></li>
+          <li><a *ngIf="isLoggedIn() && isAdmin()" (click)="openDashboardDialog()">
+            <div class="valign-center">
+              <mat-icon style="margin-right: 3px">dashboard</mat-icon>
+              <span>Dashboard</span>
+            </div>
+          </a></li>
+          <!--<li><a href="#contact-page">Contato</a></li>-->
+          <li *ngIf="!isLoggedIn()"><a (click)="openLoginDialog()">
+            <div class="valign-center">
+              <mat-icon style="margin-right: 4px">input</mat-icon>
+              <span>Entrar</span>
+            </div>
+          </a></li>
+          <li><a *ngIf="isLoggedIn()" (click)="openProfileDialog()">
+            <div class="valign-center">
+              <mat-icon style="margin-right: 3px">account_circle</mat-icon>
+              <span>Perfil</span>
+            </div>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <header class="header-area overlay full-height relative v-center" id="home-page">
+    <div class="absolute anlge-bg"></div>
+    <div class="container">
+      <div class="row v-center">
+        <div class="col-xs-12 col-md-9 header-text">
+          <h2 style="margin-top: 25px">Invista no mercado imobiliário de forma simples, segura e rentável</h2>
+          <h4>Venha conhecer nossos projetos e deixe que as construtoras ganhem dinheiro pra você</h4>
+          <a href="#projects-page" style="border-radius: 4px" class="button white">Conheça nossos projetos</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <app-how-it-works></app-how-it-works>
+
+  <app-advantages></app-advantages>
+
+  <app-projects (invest)="invest()"></app-projects>
+
+  <app-faq></app-faq>
+
+  <footer class="footer-area relative sky-bg" id="contact-page">
+    <app-contact></app-contact>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <p style="font-size: 14px">&copy;Copyright 2018 All right reserved.  This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com">Colorlib</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</ng-container>
+
